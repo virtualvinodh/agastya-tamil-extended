@@ -1,0 +1,179 @@
+﻿c Tamil Extended Phonetic Keyboard Layout
+store(&VERSION) '10.0'
+store(&NAME) 'Tamil Extended Unicode Phonetic'
+store(&COPYRIGHT) '© 2020 Vinodh Rajan'
+store(&KEYBOARDVERSION) '1.0'
+store(&TARGETS) 'windows linux web androidphone androidtablet'
+store(&BITMAP) 'tamil_phonetic.ico'
+
+begin Unicode > use(main)
+
+group(main) using keys
+
+c Vowels
+
++ "a" > 'അ'
++ "A" > 'ആ'
+'അ' + "a" > 'ആ'
++ "i" > 'ഇ'
++ "I" > 'ഈ'
+'ഇ' + "i" > 'ഈ'
++ "R" > 'ഋ'
++ "u" > 'ഉ'
+'ഉ' + "u" > 'ഊ'
++ "U" > 'ഊ'
+'ഋ' + "u" > 'ൠ'
++ "W" > 'ഌ'
+"ഌ" + "u"> 'ൡ'
++ "e" > 'എ'
+'എ' + 'e' > 'ഏ'
++ "E" > 'ഏ'
+'അ' + "i" > 'ഐ'
++ "o" > 'ഒ'
+'ഒ' + 'o' > 'ഓ'
++ "O" > 'ഓ'
+'അ' + "u" > 'ഔ'
+
+c Combining Signs
++ "M" > 'ം' c Anusvara
++ "H" > 'ഃ' c Visarga
++ "~" > 'ഁ' c Candrabindu
+
+c shift free Anusvara, Visarga, Avagraha etc. 
+'മ്‌' + ';' > 'ം' c Anusvara
+'ഹ്‌' + ';' > 'ഃ' c Anusvara
+'അ' + ';' > 'ഽ' c Avagraha
+'ം' + ';' >  'ഁ' c Candrabindu
+
+c shift free vocalic
+'രു' + ';' > 'ഋ' c -voc r
+'രൂ' + ';' > 'ൠ' c -voc rr
+'ലു' + ';' > 'ഌ' c -voc l
+'ലൂ' + ';' > 'ൡ' c -voc ll
+
+
+c Consonants
++ "k" > 'ക' '്‌'
+'ക' '്‌' + "h" > 'ഖ' '്‌'
++ "g" > 'ഗ'  '്‌'
+'ഗ' '്‌' + "h" > 'ഘ' '്‌'
++ "G" > 'ങ' '്‌'
+
++ "c" > 'ച' '്‌'
+'ച' '്‌' + "h" > 'ഛ' '്‌'
++ "j" > 'ജ' '്‌'
+'ജ' '്‌' + "h" > 'ഝ' '്‌'
++ "J" > 'ഞ' '്‌'
+
++ "T" > 'ട' '്‌'
+'ട' '്‌' + "h" > 'ഠ' '്‌'
++ "D" > 'ഡ' '്‌'
+'ഡ' '്‌' + "h" > 'ഢ' '്‌'
++ "N" > 'ണ' '്‌'
+
++ "t" > "ത" '്‌'
+'ത' '്‌' + "h" > 'ഥ' '്‌'
++ "d" > 'ദ' '്‌'
+'ദ' '്‌' + "h" > 'ധ' '്‌'
++ "n" > 'ന' '്‌'
+
++ "p" > 'പ' '്‌'
+'പ' '്‌' + "h" > 'ഫ' '്‌'
++ "b" > 'ബ' '്‌'
+'ബ' '്‌' + "h" > 'ഭ' '്‌'
++ "m" > 'മ' '്‌'
+
++ "y" >'യ'  '്‌'
+'ശ' '്‌' + 'r' >  'ശ്‍ര' '്‌'
++ "r" > 'ര' '്‌'
++ "l" > 'ല' '്‌'
++ "v" > 'വ' '്‌'
+'ക' '്‌' + "S" > 'ക'  '്' 'ഷ' '്‌' 
++ "S" > 'ഷ' '്‌'
++ "s" > 'സ' '്‌'
+'സ' '്‌' + "h" > 'ശ' '്‌'
++ "h" > 'ഹ' '്‌'
+'ക' '്‌' + "S" > 'ക'  '്' 'ഷ' '്‌' 
+
+c Shift Free
+'ത' '്‌' + ";" > 'ട' '്‌'
+'ദ' '്‌' + ";" > 'ഡ' '്‌'
+'ന' '്‌' + ";" > 'ണ' '്‌'
+'ന്‌ഗ്‌' + ';' > 'ങ' '്‌'
+'ന്‌ജ്‌' + ';' > 'ഞ' '്‌'
+'ശ' '്‌' + ';' >  'ഷ' '്‌'
+'ക' '്‌' 'ശ' '്‌' + ';' > 'ക'  '്' 'ഷ' '്‌' 
+
+c South Indic
+'ര' '്‌' + ';' > 'റ' '്‌'
++ "L" > 'ള' '്‌'
+'ല' '്‌' + ';' > 'ള' '്‌'
++ "Z"  > 'ഴ' '്‌'
+
+c Tamil Specific
+'ണ' '്‌' + ";" > 'ഩ' '്‌'
++ 'q' > 'ஃ'
+
+c Combining Signs
+
+'്‌' + "a" > nul c Remove Virama
+
+store( cons ) 'കഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹഴളറഩ'
+
+any(cons) + 'a' > index(cons,1) 'ാ' c -aa
+'്‌' + "A" > 'ാ' c -aa
+
+'്‌' + "i" > 'ി' c -i
+'ി' + "i" > 'ീ' c -ii
+'്‌' + "I"> 'ീ' c -ii
+
+'്‌' + "u" > 'ു' c -u
+'ു' + "u" > 'ൂ' c -uu
+'്‌' + "U"> 'ൂ' c -uu
+
+'ു' + "=" > U+200D 'ു'  c -uu
+'ൂ' + "="> U+200D 'ൂ' c -uu
+
+'്‌' + "R" > 'ൃ' c -voc r
+'ൃ' + "u" > 'ൄ' c -voc rr
+'്‌' + "W" > 'ൢ' c -voc l
+'ൢ' + "u" > 'ൣ' c -voc ll
+
+'്‌' + "e" > 'െ' c -e 
+'െ' + 'e' > 'േ' c -ee
+'്‌' + "E" > 'േ' c -ee
+any(cons) + "i" >  index(cons, 1) 'ൈ' c -ai
+'്‌' + "o" > 'ൊ' c  -o
+ 'ൊ' + 'o' >  'ോ' c -oo
+ '്‌' + 'O' >  'ോ' c -oo
+any(cons) + "u" > index(cons, 1) 'ൌ' c -au
+
+c Shift Free Vocalic
+
+'്‌രു' + ';' > 'ൃ' c -voc r
+'്‌രൂ' + ';' > 'ൄ' c -voc rr
+'്‌ലു' + ';' > 'ൢ' c -voc l
+'്‌ലൂ' + ';' > 'ൣ' c -voc ll
+
+c Signs 
++ "@" > 'ഽ' c Avagraha
+'ഓഁ' + ';' > 'ௐ' c OM
+
+c Vedic Signs
+'ഗ'  '്‌' + "M" > U+A8F3 c Agama Anusvara
+'ഗ്‌മ്‌' + ';' > U+A8F3 c Agama Anusvara
+
+c Devanagari Block
+
+"." + ';' > U+0964 c Danda
+".." + ';' > U+0965 c Danda double
+
+'"' + ";" > U+1CDA c Dirgha svarita
+"'" + ";" > U+0951 c Udatta 
+'_' + ";" > U+0952 c Anudatta
+
+'“' + ";" > U+1CDA c Dirgha svarita
+"‘" + ";" > U+0951 c Udatta 
+
+'”' + ";" > U+1CDA c Dirgha svarita
+"’" + ";" > U+0951 c Udatta 
