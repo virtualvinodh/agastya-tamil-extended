@@ -4,6 +4,30 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        const ssCheckboxes = document.querySelectorAll('.ss-checkbox');
+        const textBlocks = document.querySelectorAll('.sharada');
+
+        ssCheckboxes.forEach(function(checkbox) {
+          checkbox.addEventListener('change', function() {
+            let ssList = [];
+            ssCheckboxes.forEach(function(checkbox) {
+              if (checkbox.checked) {
+                ssList.push(checkbox.dataset.ss);
+              }
+            });
+            let featureSettings = '';
+            if (ssList.length > 0) {
+              featureSettings = '"' + ssList.join('", "') + '"';
+            }
+            textBlocks.forEach(function(textBlock) {
+              if (textBlock.classList.contains('sharada')) {
+                textBlock.style.fontFeatureSettings = featureSettings;
+              }
+            });
+          });
+        });
+      });
             function onLoad() {
               queryString = window.location.search
               const tab = queryString.split('=')[1]
@@ -37,7 +61,7 @@
                   })
 
                   for (let j = 0; j < lig.length; j++) {
-                    if (name == "agastyasansu") {
+                    if (name == "agastyasansu" || name == "idhmavahasansu") {
                       x[i].innerHTML = x[i].innerHTML.replaceAll(nonlig[j],lig[j])
                     } else {
                       x[i].innerHTML = x[i].innerHTML.replaceAll(lig[j],nonlig[j])
@@ -87,10 +111,6 @@
                 src: url('./agastya_sans.otf');
             }
             @font-face {
-                font-family: 'Lopamudra Sans';
-                src: url('./lopamudra_sans.otf');
-            }
-            @font-face {
                 font-family: 'Agastya Serif';
                 src: url('./agastya_serif.otf');
             }
@@ -102,12 +122,15 @@
                 font-family: 'Lopamudra Serif';
                 src: url('./lopamudra_serif.otf');
             }
-            .agastyasans{
-              font-family: 'Agastya Sans';
-              font-size:25px;
-              line-height: 1.7em;
+            @font-face {
+                font-family: 'Idhmavaha Sans';
+                src: url('./idhmavaha_sans.otf');
             }
-            .agastyasansu{
+            @font-face {
+                font-family: 'Idhmavaha Serif';
+                src: url('./idhmavaha_serif.otf');
+            }
+            .agastyasans{
               font-family: 'Agastya Sans';
               font-size:25px;
               line-height: 1.7em;
@@ -127,29 +150,13 @@
               font-size:25px;
               line-height: 1.7em;
             }
-
-            .agastyasans_ss01{
-              font-family: 'Agastya Sans';
-              font-feature-settings: "ss01";
+            .idhmavahasans{
+              font-family: 'Idhmavaha Sans';
               font-size:25px;
               line-height: 1.7em;
             }
-            .agastyaserif_ss01{
-              font-family: 'Agastya Serif';
-              font-feature-settings: "ss01";
-              font-size:25px;
-              line-height: 1.7em;
-            }
-
-            .lopamudrasans_ss02{
-              font-family: 'Lopamudra Sans';
-              font-feature-settings: "ss02";
-              font-size:25px;
-              line-height: 1.7em;
-            }
-            .lopamudraserif_ss02{
-              font-family: 'Lopamudra Serif';
-              font-feature-settings: "ss02";
+            .idhmavahaserif{
+              font-family: 'Idhmavaha Serif';
               font-size:25px;
               line-height: 1.7em;
             }
@@ -169,7 +176,9 @@
               <button class="w3-bar-item w3-button tablink" id="tabhome" onclick="openTab(event, 'home')">Home</button>
               <button class="w3-bar-item w3-button tablink" id="tabinput" onclick="openTab(event, 'input')" style="display:none">Input</button>
               <button class="w3-bar-item w3-button tablink" id="tabText-Basic" onclick="openTab(event, 'Text-Basic')">Basic</button>
-              <button class="w3-bar-item w3-button tablink" id="tabText-Basic-2" onclick="openTab(event, 'Text-Basic-2')" style="display:none">Basic 2</button>
+
+              <button class="w3-bar-item w3-button tablink" id="tabText-Basic-2" onclick="openTab(event, 'Text-Basic-2')">Basic 2</button>
+
               <button class="w3-bar-item w3-button tablink" id="tabConjuncts" onclick="openTab(event, 'Text-Conjuncts')" style="display:none">Conjuncts</button>
               <button class="w3-bar-item w3-button tablink" id="tabText-Vedic" onclick="openTab(event, 'Text-Vedic')">Text: Vedic</button>
               <button class="w3-bar-item w3-button tablink" id="tabshreesukta" onclick="openTab(event, 'shreesukta')">Text: Vedic 2</button>
@@ -182,7 +191,8 @@
 
             </small>
           </div>
-          <div style="margin-left:150px;margin-top: 10px;margin-right:30px">
+          <div style="margin-left:150px;margin-top: 10px;margin-right:30px;">
+            <div style="position: fixed;background-color: white;">
             Font Size: <input id="inputfont" type="range" oninput="changeFontSize(this.value)" min="10" max="100" value="25" step="2"/>
             Line Height: <input id="inputline" type="range" oninput="changeLineSize(this.value)" min="0" max="3" value="1.7" step="0.1"/>
 
@@ -190,20 +200,63 @@
               <input type="radio" id="agastyasans" name="font" value="agastyasans" checked="checked" onclick="changeFont()">
               <label for="agastyasans">Agastya Sans</label>
 
-              <input type="radio" id="agastyasansu" name="font" value="agastyasansu" onclick="changeFont()">
-              <label for="agastyasans">Agastya Sans (with ligated u/uu)</label>
+              <input type="radio" id="lopamudrasans" name="font" value="lopamudrasans" onclick="changeFont()">
+              <label for="agastyasans">Lopamudra Sans</label>
+
+              <input type="radio" id="idhmavahasans" name="font" value="idhmavahasans" onclick="changeFont()">
+              <label for="agastyasans">Idhmavaha Sans</label>
 
               <input type="radio" id="agastyaserif" name="font" value="agastyaserif" onclick="changeFont()">
               <label for="agastyasans">Agastya Serif</label>
 
-              <input type="radio" id="lopamudrasans" name="font" value="lopamudrasans" onclick="changeFont()">
-              <label for="agastyasans">Lopamudra Sans</label>
-
               <input type="radio" id="lopamudraserif" name="font" value="lopamudraserif" onclick="changeFont()">
               <label for="agastyasans">Lopamudra Serif</label>
 
+              <input type="radio" id="idhmahavaserif" name="font" value="idhmavahaserif" onclick="changeFont()">
+              <label for="agastyasans">Idhmavaha Serif</label>
+
               <br/><br/>
-              <b> Stylistic Sets: </b>
+
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss01">
+                Stylistic Set 1
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss02">
+                Stylistic Set 2
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss03">
+                Stylistic Set 3
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss04">
+                Stylistic Set 4
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss05">
+                Stylistic Set 5
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss06">
+                Stylistic Set 6
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss07">
+                Stylistic Set 7
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss08">
+                Stylistic Set 8
+              </label>
+              <label>
+                <input type="checkbox" class="ss-checkbox" data-ss="ss09">
+                Stylistic Set 9
+              </label>
+              <hr/>
+              </div>
+              <div style="height:200px"></div>
+              <!-- <b> Stylistic Sets: </b>
               <input type="radio" id="agastyasans_ss01" name="font" value="agastyasans_ss01"  onclick="changeFont()">
               <label for="agastyasans">Agastya Sans (SS01)</label>
 
@@ -214,9 +267,9 @@
               <label for="agastyasans">Lopamudra Sans  (SS02)</label>
 
               <input type="radio" id="lopamudraserif_ss02" name="font" value="lopamudraserif_ss02" onclick="changeFont()">
-              <label for="agastyasans">Lopamudra Serif  (SS02)</label>
+              <label for="agastyasans">Lopamudra Serif  (SS02)</label> -->
 
-            <hr/>
+
              <div class="sharada agastyasans" id="home">
               <h1 class="agastyasans">അഗസ്‌ത്‌യഃ ച ലോപമുദ്‌രാ : Test Page</h1>
               <hr/>
@@ -245,6 +298,18 @@
                 ഗ്‌ ഗ ഗാ ഗി ഗീ ഗു ഗൂ ഗൃ ഗൄ ഗൢ ഗൣ ഗെ ഗൈ ഗൊ ഗൌ ഗം ഗഃ ഗഁ
                 <h3> Vedic Signs</h3>
                 പ॑ പ᳚ പ॒ ꣳ ꣴ
+                <h3> Modified</h3>
+                ഖ ഖി ഖീ ഖു ഖൂ ഖ്‌ <br/>
+                ഥ ഥി ഥീ ഥു ഥൂ ഥ്‌ <br/>
+                ധ ധി ധീ ധു ധൂ ധ്‌ <br/>
+                ദ ദി ദീ ദു ദ്‌ <br/>
+                <h3> Tamil Modified </h3>
+                ക കി കീ കു കൂ ക്‌ <br/>
+                ച ചാ ചി ചീ ചു ചൂ ച്‌ <br/>
+                ട ടി ടീ ടു ടൂ ട്‌ <br/>
+                ത തി തീ തു തൂ ത്‌ <br/>
+                പ പി പീ പു പൂ പ്‌ <br/>
+                ള ളി ളീ ളു ളൂ ള്‌ <br/>
               </div>
             <div class="sharada agastyasans" id="input" style="display:none;"/>
                 <textarea> </textarea>
@@ -343,5 +408,6 @@
 </div>
 
 </div>
+
 
 </body></html>
