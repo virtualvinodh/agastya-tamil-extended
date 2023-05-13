@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Package>
   <System>
-    <KeymanDeveloperVersion>13.0.115.0</KeymanDeveloperVersion>
+    <KeymanDeveloperVersion>16.0.139.0</KeymanDeveloperVersion>
     <FileVersion>7.0</FileVersion>
   </System>
   <Options>
     <ExecuteProgram></ExecuteProgram>
     <ReadMeFile>src\readme.htm</ReadMeFile>
     <GraphicFile>src\splash.bmp</GraphicFile>
-    <MSIFileName>C:\Users\vinod\OneDrive\Desktop\Others All\keyman-14.0.271\keymandesktop.msi</MSIFileName>
+    <MSIFileName>C:\Users\vinod\Desktop\keymandesktop.msi</MSIFileName>
     <MSIOptions></MSIOptions>
   </Options>
   <StartMenu>
@@ -124,6 +124,18 @@
       <Description>File how_to_use.pdf</Description>
       <CopyLocation>0</CopyLocation>
       <FileType>.pdf</FileType>
+    </File>
+    <File>
+      <Name>src\idhmavaha_sans.otf</Name>
+      <Description>Font Idhmavaha Sans</Description>
+      <CopyLocation>0</CopyLocation>
+      <FileType>.otf</FileType>
+    </File>
+    <File>
+      <Name>src\idhmavaha_serif.otf</Name>
+      <Description>Font Idhmavaha Serif</Description>
+      <CopyLocation>0</CopyLocation>
+      <FileType>.otf</FileType>
     </File>
   </Files>
   <Keyboards>
