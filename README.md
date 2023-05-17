@@ -1,4 +1,4 @@
-# Agastya and Lopamudra for Extended Tamil
+# Agastya, Lopamudra & Idhmavaha for Extended Tamil
 Agastya, Lopamudra & Idhmavaha are Unicode fonts for the Extended Tamil script, an experimental attempt to use the full complimentary set of Grantha letters to fill in the gaps in the Tamil script (as compared to the pan-Indic system).
 
 This method was sporadically experimented from the late 1800's up until the middle part of the 20th century. One such publication from 1905 can be seen [here](https://archive.org/stream/bhojacharitrama00sastgoog#page/n534/mode/2up).
