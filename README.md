@@ -17,6 +17,6 @@ atha khalu akṣayamatirbodhisattvo mahāsattva utthāya āsanādekāṃsamuttar
 
 # Demo Page #
 
-You can find various texts rendered both in Agastya and Lopamudra [here](https://virtualvinodh.github.io/agastya-tamil-extended/test_page.html)
+You can test the appearance of the fonts [here](https://virtualvinodh.github.io/agastya-tamil-extended/test_page.html).
 
 
